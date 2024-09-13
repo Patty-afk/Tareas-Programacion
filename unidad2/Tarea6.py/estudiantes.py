@@ -12,8 +12,9 @@ class Estudiante:
         self.nombre = nombre
         self.curso = []
         
-    def agregar_curso(self, curso):
-        self.curso.append(curso)
+    def agregar_curso(self, *curso):
+        for curso in curso :
+            self.curso.append(curso)
         
     
     def mostrar_informacion(self):
@@ -23,6 +24,8 @@ class Estudiante:
        
        
        print("----------------cursos del estudiante---------------- ")
+       
        for Curso in self.curso:
-           print("nombre del curso: ", Curso.nombre_curso)
-           print("codigo del curso: ", Curso.codigo_curso)
+         print("nombre del curso: ", Curso.nombre_curso)
+         print("codigo del curso: ", Curso.codigo_curso)
+         print("nombre del instrctor: ",Curso.instructor)
