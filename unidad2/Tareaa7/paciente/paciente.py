@@ -1,23 +1,23 @@
-#import random
+import random
 
 class Paciente:
-    id = 0
-    nombre = ""
-    ano_nacimiento = 0
-    peso = 0
-    estatura = 0
-    direccion = ""
+    id =int
+    nombre =str
+    ano_nacimiento = int
+    peso = float
+    estatura = float
+    direccion = str
 
-    def __init__(self, nombre, ano_nacimiento, peso, estatura, direccion, id):
-        #self.id = random.randint(1, 10001)
-        self.id = id
+    def __init__(self, nombre : str, ano_nacimiento : int, peso: float, estatura : float, direccion: str):
+        self.id = random.randint(1, 10001)
+        #self.id = id
         self.nombre = nombre
         self.ano_nacimiento = ano_nacimiento
         self.peso = peso
         self.estatura = estatura
         self.direccion = direccion
 
-    def mostrar_informacion(self):
+    def mostrar_informacion(self) :
         print(f"\nId: {self.id}")
         print(f"Nombre: {self.nombre}")
         print(f"Año de nacimiento: {self.ano_nacimiento}")
