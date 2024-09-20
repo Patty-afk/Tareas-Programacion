@@ -2,22 +2,25 @@ from typing import List
 from medico.medico import Medico
 from paciente.paciente import Paciente
 from Consulta.consulta import Consulta
-
+from validador_hospital import ValidadorHospital
 
 class Hospital:
     pacientes : List[Paciente] = []
     medicos : list[Medico] = []
     consultas : list[Consulta] = []
-
+    validador_hospital = ValidadorHospital = []
 
     def registrar_consulta(self, id_paciente, id_medico):
         if not self.validar_cantidad_usuarios() == False:
             return
         
-        if self.validar_existencia_paciente(id_paciente) == False or self.validar_existencia_medico(id_medico) == False:
-            print("No se puede registrar la consulta, no existe el médico o el paciente")
+        # if self.validar_existencia_paciente(id_paciente) == False or self.validar_existencia_medico(id_medico) == False:
+        #     print("No se puede registrar la consulta, no existe el médico o el paciente")
+        #     return
+        # print("Continuamos con el registro")
+        if not self.validador_hospital.validar_existencia_paciente(id_paciente,lista_pacientes=self.pacientes):
+            print("no se puede registrar la consulta, no existe el paciente")
             return
-        print("Continuamos con el registro")
 
     def registrar_paciente(self, paciente):
         self.pacientes.append(paciente)
@@ -64,35 +67,12 @@ class Hospital:
 
         
     def mostrar_medicos(self):
-        print("-/-/- Medicos en el Sistema -/-/-")
+        print("*** Medicos en el Sistema ***")
         for medico in self.medicos:
             medico.mostrar_informacion()
     
 
-    def validar_existencia_paciente(self, id_paciente):
-        for paciente in self.pacientes:
-              if paciente.id == id_paciente:
-                return True
-  
-        return False
-    
-    def validar_existencia_medico(self, id_medico):
-        for medico in self.medicos:
-            if medico.id == id_medico:
-                return True
-            
-        return False
-        
-    def validar_cantidad_usuarios(self):
-        if len(self.pacientes) == 0:
-            print("No puedes registra una consulta, no existen pacientes")
-            return False
-        
-        if len(self.medicos) == 0:
-            print("No puedes registra una consulta, no existen médicos")
-            return False
-        
-        return True
+ 
 
     
         
