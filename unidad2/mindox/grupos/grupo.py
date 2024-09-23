@@ -5,7 +5,8 @@ from materias.materia import Materia
 
 class Grupo:
     id: int
-    estudiantes :list [Estudiante] = []
-    maestro: list [Maestro] = []
-    materias :list [Materia]= []
+    estudiantes: List[Estudiante] = []
+    maestros: List[Maestro] = []
+    materias: List[Materia] = []
     tipo: chr
+    
