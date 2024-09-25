@@ -10,3 +10,6 @@ class Grupo:
     materias: List[Materia] = []
     tipo: chr
     
+    
+    def __init__(self):
+        pass

@@ -15,5 +15,9 @@ class Materia:
         self.descripcion = descripcion
         self.creditos = creditos
         
+    def mostar_inform_materia(self):
+        inform =f" \nid_materia: {self.id_materia}, nombre de la materia: {self.nombre_materia}, semestre: {self.semestre}, descripcion de la materia: {self.descripcion}, numero de creditos:{self.creditos}"    
+        return inform  
+        
         
         

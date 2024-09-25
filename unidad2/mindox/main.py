@@ -3,6 +3,7 @@ from estudiantes.estudiante import Estudiante
 from maestros.maestro import Maestro
 from datetime import datetime
 from materias.materia import Materia
+from grupos.grupo import Grupo
 
 
 escuela = Escuela()
@@ -14,7 +15,14 @@ while True:
     print("3. Registrar materia")
     print("4. Registrar grupo")
     print("5. Registrar horario")
-    print ("6. salir")
+    print("6. Mostrar estudiantes")
+    print("7. Mostrar maestros")
+    print("8. mostrar materias")
+    print("9. mostrar grupos")
+    print("10. eliminar estudiante")
+    print("11. eliminar maestro")
+    print("12. eliminar materias")
+    print ("13. salir")
     
     opcion = input("Ingresa una opcion para continuar: ")
     
@@ -35,6 +43,10 @@ while True:
         estudiante = Estudiante(numero_control=numero_control, nombre=nombre, apellido=apellido, curp=curp, fecha_nacimiento=fecha_nacimieto)
         escuela.registrar_estudiante(estudiante_regis=estudiante)
         
+        print("se registro el estudiante correctamente ")
+        
+        
+        
     elif opcion == "2":
         print("\nSeleccionaste la opcion para regitrar un maestro")
         nombre = input("Ingresa el nombre del maestro: ")
@@ -47,6 +59,8 @@ while True:
         
         maestro = Maestro(numero_control=numero_control, nombre=nombre, apellido=apellido, rfc=rfc, sueldo=sueldo)
         escuela.registrar_maestro(maestro_regis=maestro)
+        
+        print("se registro el maestro correctamente ")
         
     
     elif opcion == "3":
@@ -61,12 +75,53 @@ while True:
         materia = Materia(id_materia=id_materia, nombre_materia=nombre_materia,semestre=semestre, descripcion=descripcion, creditos=creditos)
         escuela.registrar_materia(regis_materia= materia)
      
-     
+        print("se registro la materia correctamente :)")
+        
      
     elif opcion == "4":
         pass
+    
     elif opcion == "5":
         pass
+    
     elif opcion == "6":
+        escuela.listar_estudiantes()
+    
+    elif opcion == "7":
+        print("maestros registrados")
+        escuela.listar_maestros()
+    
+    elif opcion == "8":
+        print("Materias registradas")
+        escuela.listar_materias()
+    
+    elif opcion == "9":
+        pass
+    
+    elif opcion == "10":
+        print("seleccionaste la opcion para eliminar un estudiante")
+
+        numero_control= input("ingresa el numero de control del estudiante:")
+        
+        escuela.eliminar_estudiante(numero_control=numero_control)
+        
+    
+    elif opcion == "11":
+        print("seleccionaste la opcion para eliminar un maestro")
+
+        numero_control= input("ingresa el numero de control del maestro:")
+        
+        escuela.eliminar_maestro(numero_control=numero_control)
+        
+        
+    
+    elif opcion == "12":
+        print("seleccionaste la opcion para eliminar una materia")
+
+        id_materia= input("ingresa el id de la materia:")
+        
+        escuela.eliminar_materia(id_materia=id_materia)
+        
+    elif opcion == "13":
         print("\n Hasta luego")
         break
