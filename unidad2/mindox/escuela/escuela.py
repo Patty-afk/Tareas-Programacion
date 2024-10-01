@@ -5,12 +5,17 @@ from maestros.maestro import Maestro
 from materias.materia import Materia
 from datetime import datetime
 from random import randint
+from carrera.carrera import Carrera
+from semestres.semestre import Semestre
 
 class Escuela:
    lista_estudiantes: List[Estudiante] = []
    lista_grupos: List[Grupo] = []
    lista_maestros: List[Maestro] = []
    lista_materias: List[Materia] = []
+   lista_carreras: List [Carrera] = []
+   lista_semestres: List [Semestre] = []
+   
    
    
    def registrar_estudiante(self, estudiante_regis: Estudiante):
@@ -38,6 +43,26 @@ class Escuela:
        aleatorio = randint(0,10000)
        numero_control = f"l{ano}{mes}{longitud_mas_uno}{aleatorio}"
        return numero_control
+   
+   
+   
+   
+   
+   def registrar_grupo(self, grupo:Grupo):
+      id_semestre = grupo.id_semestre
+      
+      for semestre in self.lista_semestres:
+         if id_semestre ==semestre.id:
+            semestre.registar_grupo_en_semestre(grupo=grupo)
+            break
+      
+      self.lista_grupos.append(grupo)
+      
+   def listar_grupos(self):
+      print("**Grupos***")
+      for grupo in self.lista_grupos:
+         print(grupo.mostrar_info_grupos())
+      
    
    
    
@@ -88,11 +113,43 @@ class Escuela:
          print ("materia eliminada")
          return
     print(f"No se encontro la materia con el id : {id_materia}")
-      
+    
    def generar_id_materia(self, nombre_materia:str, semestre:int, creditos:int):
       ult_digitos =nombre_materia [-2:].upper()
       random =randint(1,1000)
       
       id_materia = f"MT{ult_digitos}{semestre}{creditos}{random}"
       return id_materia
+      
+      
+      
+      
+   def registrar_carrera(self, carrera: Carrera):
+      self.lista_carreras.append(carrera)
+      
+   def listar_carreras (self):
+      print("** Carreras **")
+      for carrera in self.lista_carreras:
+         print(carrera.mostrar_info_carrera())
+   
+      
+      
+      
+   
+   def registrar_semestre(self, semestre: Semestre):
+      id_carrera = semestre.id
+      
+      for carrera in self.lista_carreras:
+         if carrera.id ==id_carrera:
+            carrera.registar_semestre(semestre=semestre)
+            break
+         
+      
+      self.lista_semestres.append(semestre)
+      
+   def listar_semestres(self):
+      print("**Semestres***")
+      for semestre in self.lista_semestres:
+         print(semestre.mostrar_info_semestres())
+      
       
